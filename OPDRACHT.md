@@ -31,9 +31,9 @@ Je dient de back-end applicatie te maken voor een Wordle spel. Zie https://wordl
     - communiceer eventuele fouten duidelijk naar de gebruiker toe!
 - Voorzie de API die nodig is om de front-end van het spel te kunnen bouwen
   - Denk zelf na over welke endpoints je nodig hebt om het spel te kunnen spelen en hoe die inhoudelijk best werken
-  - Er dient niet ingelogd te kunenn worden om het spel te spelen
-  - Er worden geen highscores of streaks bijgehouden
-  - Een gebruiker heeft maximum 6 pogingen om het woord te raden.
+  - Er dient niet ingelogd te kunnen worden om het spel te spelen
+  - Er worden geen highscores bijgehouden
+  - Een gebruiker krijgt maximum 6 pogingen om het woord te raden.
 - Voorzie documentatie voor de endpoints. Deze mag gegenereerd worden door Scribe, andere manieren mogen ook, maar ik wil kunnen zien welke endpoints er zijn, wat ik ernaar toe kan/moet sturen en wat ik terug mag verwachten
 - Maak op /dashboard een ranking van de 100 meest _gegokte_ woorden (die ook een bestaand engels woord zijn) en toon het precieze aantal.
 
@@ -51,7 +51,7 @@ Je wordt geëvalueerd op basis van volgende criteria:
 
 - Aanpak: Werk je features zo af zodat de waarde voor de klant zo hoog mogelijk is: je wil liever een werkende applicatie waarin bepaalde features ontbreken dan een niet-werkende applicatie waarbij alle features slechts half aanwezig zijn.
 - Architectuur: blijf verder werken volgens het MVC-principe en denk na over een goede DB-structuur.
-- Security: denk na over veiligheid van de back-end en zorg ervoor dat er niet valsgespeeld kan worden.
+- Security: denk na over veiligheid van de back-end en zorg er vooral voor dat er niet valsgespeeld kan worden.
 - Leesbaarheid van code + documentatie.
 - Kennis: er kan tijdens het examen gevraagd worden om een stuk van je code toe te lichten.
 
