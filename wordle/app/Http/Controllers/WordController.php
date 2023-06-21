@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Word;
 
 class WordController extends Controller
 {
@@ -11,7 +12,8 @@ class WordController extends Controller
      */
     public function index()
     {
-        //
+        $words = Word::all();
+        return view('words.index', compact('words'));
     }
 
     /**
@@ -19,7 +21,7 @@ class WordController extends Controller
      */
     public function create()
     {
-        //
+        return view('words.create');
     }
 
     /**
@@ -27,7 +29,17 @@ class WordController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'word'=>'required',
+        ]);
+
+        $word = new Word([
+            'word' => $request->get('word'),
+            'sheduled_at' => date('Y-m-d'), // Currently using today's day, needs refactoring!
+        ]);
+
+        $word->save();
+        return redirect('words')->with('success', 'Word saved!');
     }
 
     /**
@@ -43,7 +55,8 @@ class WordController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $word = Word::find($id);
+        return view('words.edit', compact('word')); 
     }
 
     /**
@@ -51,7 +64,16 @@ class WordController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'word'=>'required',
+        ]);
+
+        $word = Word::find($id);
+        $word->word =  $request->get('word');
+        $word->sheduled_at = date('Y-m-d'); // Currently using today's day, needs refactoring!
+
+        $word->save();
+        return redirect('/words')->with('success', 'Word updated!');
     }
 
     /**
@@ -59,6 +81,8 @@ class WordController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $word = Word::find($id);
+        $word->delete();
+        return redirect('/words')->with('success', 'Word deleted!');
     }
 }
