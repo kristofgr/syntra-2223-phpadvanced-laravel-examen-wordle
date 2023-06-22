@@ -35,7 +35,7 @@ class WordController extends Controller
 
         $word = new Word([
             'word' => $request->get('word'),
-            'sheduled_at' => date('Y-m-d'), // Currently using today's day, needs refactoring!
+            'scheduled_at' => date('Y-m-d'), // Currently using today's day, needs refactoring!
         ]);
 
         $word->save();
@@ -70,7 +70,7 @@ class WordController extends Controller
 
         $word = Word::find($id);
         $word->word =  $request->get('word');
-        $word->sheduled_at = date('Y-m-d'); // Currently using today's day, needs refactoring!
+        $word->scheduled_at = date('Y-m-d'); // Currently using today's day, needs refactoring!
 
         $word->save();
         return redirect('/words')->with('success', 'Word updated!');

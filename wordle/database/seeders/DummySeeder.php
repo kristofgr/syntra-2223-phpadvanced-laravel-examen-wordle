@@ -23,19 +23,19 @@ class DummySeeder extends Seeder
 
         DB::table('words')->insert([
             'word' => 'floor',
-            'sheduled_at' => date('Y-m-d', strtotime('-1 day')),
+            'scheduled_at' => date('Y-m-d', strtotime('-1 day')),
             'created_at' => now(),
         ]);
 
         DB::table('words')->insert([
             'word' => 'chips',
-            'sheduled_at' => date('Y-m-d'),
+            'scheduled_at' => date('Y-m-d'),
             'created_at' => now(),
         ]);
 
         DB::table('words')->insert([
             'word' => 'salsa',
-            'sheduled_at' => date('Y-m-d', strtotime('+1 day')),
+            'scheduled_at' => date('Y-m-d', strtotime('+1 day')),
             'created_at' => now(),
         ]);
     }

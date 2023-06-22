@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('word');
-            $table->date('sheduled_at');
+            $table->date('scheduled_at');
         });
     }
 

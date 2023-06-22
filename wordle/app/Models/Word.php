@@ -11,6 +11,6 @@ class Word extends Model
 
     protected $fillable = [
         'word',
-        'sheduled_at'
+        'scheduled_at'
     ];
 }

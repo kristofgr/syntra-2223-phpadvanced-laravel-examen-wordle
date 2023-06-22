@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-          {{ __('Words shedule') }}
+          {{ __('Words schedule') }}
       </h2>
   </x-slot>
 
@@ -32,7 +32,7 @@
                                 Word
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Sheduled
+                                scheduled
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Created at
@@ -48,7 +48,7 @@
                                 {{ $word->word }}
                             </th>
                             <td class="px-6 py-4">
-                                {{ $word->sheduled_at }}
+                                {{ $word->scheduled_at }}
                             </td>
                             <td class="px-6 py-4">
                                 {{ $word->created_at->format('Y-m-d - H:i:s') }}

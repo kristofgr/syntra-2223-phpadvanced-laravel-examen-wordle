@@ -22,14 +22,14 @@ Je dient de back-end applicatie te maken voor een Wordle spel. Zie https://wordl
 - Werk, indien mogelijk, met sail of andere virtualisatie.
 - Werk de CRUD verder af (9 punten):
   - blijf verder gebruik maken van de beschikbare css en componenten, de GUI moet verzorgd zijn/blijven. Zie https://flowbite.com/docs/getting-started/introduction/ indien nodig.
-  - Bugfix: Wanneer je momenteel een _word_ aanmaakt of bewerkt, maar het niet uit wat je invult in het veld _sheduled at_, het resultaat van dit datumveld in de database staat steeds op de datum van vandaag -> dit klopt niet en moet opgelost worden.
+  - Bugfix: Wanneer je momenteel een _word_ aanmaakt of bewerkt, maar het niet uit wat je invult in het veld _scheduled at_, het resultaat van dit datumveld in de database staat steeds op de datum van vandaag -> dit klopt niet en moet opgelost worden.
   - zorg voor degelijke validatie, deze ontbreekt vandaag!
     - _words_ moeten steeds 5 karakters lang zijn
     - een datumveld moet in de toekomst of vandaag zijn
     - er kunnen geen 2 woorden op éénzelfde datum ingeboekt worden
     - een woord moet een bestaand engels woord zijn. Hieronder verstaan we enkel woorden die voorkomen in bijgevoegde lijst _english5letterwords.csv_ in de root van deze repo.
     - communiceer eventuele fouten duidelijk naar de gebruiker toe!
-  - voorzie een datepicker voor _sheduled at_
+  - voorzie een datepicker voor _scheduled at_
 - Voorzie de API die nodig is om de front-end van het spel te kunnen bouwen (9 punten)
   - Denk zelf na over welke endpoints je nodig hebt om het spel te kunnen spelen en hoe die inhoudelijk best werken
   - Er dient niet ingelogd te kunnen worden om het spel te spelen
