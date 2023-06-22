@@ -31,11 +31,12 @@ class WordController extends Controller
     {
         $request->validate([
             'word'=>'required',
+            'scheduled_at'=>'required',
         ]);
 
         $word = new Word([
             'word' => $request->get('word'),
-            'scheduled_at' => date('Y-m-d'), // Currently using today's day, needs refactoring!
+            'scheduled_at' => $request->get('scheduled_at'),
         ]);
 
         $word->save();
@@ -66,11 +67,12 @@ class WordController extends Controller
     {
         $request->validate([
             'word'=>'required',
+            'scheduled_at'=>'required',
         ]);
 
         $word = Word::find($id);
         $word->word =  $request->get('word');
-        $word->scheduled_at = date('Y-m-d'); // Currently using today's day, needs refactoring!
+        $word->scheduled_at = $request->get('scheduled_at');
 
         $word->save();
         return redirect('/words')->with('success', 'Word updated!');
