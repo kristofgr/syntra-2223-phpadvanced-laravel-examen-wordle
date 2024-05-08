@@ -12,7 +12,6 @@ Je dient de back-end applicatie te maken voor een Wordle spel. Zie https://wordl
 - De speler krijgt hiervoor maximaal 6 pogingen
 - Belangrijk: In tegenstelling tot wordlegame.org is er slechts 1 te raden woord per dag! Dit is gebaseerd op het de versie van NY Times: https://www.nytimes.com/games/wordle/index.html
 
-
 ## Wat wordt van jou verwacht?
 
 - Start vanaf deze repo. Je vindt hierin volgende zaken terug:
@@ -20,6 +19,7 @@ Je dient de back-end applicatie te maken voor een Wordle spel. Zie https://wordl
   - een volledige visuele CRUD voor _words_ (MVC), achter login wall.
 - Werk verder met composer, extra packages mogen toegevoegd worden indien je dat nodig acht.
 - Werk, indien mogelijk, met sail of andere virtualisatie.
+
 - Werk de CRUD verder af (9 punten):
   - blijf verder gebruik maken van de beschikbare css en componenten, de GUI moet verzorgd zijn/blijven. Zie https://flowbite.com/docs/getting-started/introduction/ indien nodig.
   - Bugfix: Wanneer je momenteel een _word_ aanmaakt of bewerkt, maar het niet uit wat je invult in het veld _scheduled at_, het resultaat van dit datumveld in de database staat steeds op de datum van vandaag -> dit klopt niet en moet opgelost worden.
@@ -34,21 +34,24 @@ Je dient de back-end applicatie te maken voor een Wordle spel. Zie https://wordl
   - Denk zelf na over welke endpoints je nodig hebt om het spel te kunnen spelen en hoe die inhoudelijk best werken
   - Er dient niet ingelogd te kunnen worden om het spel te spelen
   - Er worden geen highscores bijgehouden
-  - Een gebruiker krijgt maximum 6 pogingen om het woord te raden. 
+  - Een gebruiker krijgt maximum 6 pogingen om het woord te raden.
   - Voorzie documentatie voor de endpoints. Deze mag gegenereerd worden door Scribe, andere manieren mogen ook, maar ik wil kunnen zien welke endpoints er zijn, wat ik ernaar toe kan/moet sturen en wat ik terug mag verwachten
 - Maak op /dashboard een ranking van de 10 meest _gegokte_ woorden (die ook een bestaand engels woord zijn volgens de csv-lijst) en toon het precieze aantal. (2 punten)
 
 ## Beschikbare tools
+
 Gebruik is toegestaan van:
+
 - online documentatie en tutorials
 - alle oefeningen die we het afgelopen jaar gemaakt hebben
-- AI-tools 
+- AI-tools
 
 **Er mag absoluut niet:**
+
 - samen gewerkt worden met andere cursisten
 
-
 ## Evaluatie
+
 Je wordt geëvalueerd op basis van volgende criteria:
 
 - Aanpak: Werk je features zo af zodat de waarde voor de klant zo hoog mogelijk is: je wil liever een werkende applicatie waarin bepaalde features ontbreken dan een niet-werkende applicatie waarbij alle features slechts half aanwezig zijn.
