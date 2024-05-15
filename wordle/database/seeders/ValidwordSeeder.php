@@ -1,109 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Database\Seeders;
 
-use App\Models\Validword;
-use Illuminate\Http\Request;
-use App\Models\Word;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
-class WordController extends Controller
+class ValidwordSeeder extends Seeder
 {
     /**
-     * Display a listing of the resource.
+     * Run the database seeds.
      */
-    public function index()
-    {
-        $words = Word::all();
-        return view('words.index', compact('words'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('words.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'word' => 'required|size:5',
-            'scheduled_at' => 'required|date|after_or_equal:today|unique:words',
-        ]);
-
-        $word = new Word([
-            'word' => $request->get('word'),
-            'scheduled_at' => $request->get('scheduled_at'),
-        ]);
-
-        $word->save();
-        return redirect('words')->with('success', 'Word saved!');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        $word = Word::find($id);
-        return view('words.edit', compact('word'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        $request->validate([
-            'word' => 'required|size:5',
-            'scheduled_at' => 'required|date|after_or_equal:today',
-        ]);
-
-        $new_word = $request->get('word');
-
-        // Easy solution: search for valid words in array in method underneath
-        // if (!$this->isValid($new_word)) {
-        //     return redirect()->back()->withErrors(['word' => 'The word ' . $new_word . ' is not valid.']);
-        // }
-
-        // Solution with MVC: we created a modal, migration and seeder for valid words
-        $valid = Validword::where('word', $new_word)->first();
-        if (!$valid) {
-            return redirect()->back()->withErrors(['word' => 'The word ' . $new_word . ' is not valid.']);
-        }
-
-        $word = Word::find($id);
-        $word->word =  $new_word;
-        $word->scheduled_at = $request->get('scheduled_at');
-
-        $word->save();
-        return redirect('/words')->with('success', 'Word "' . $new_word . '" updated!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        $word = Word::find($id);
-        $word->delete();
-        return redirect('/words')->with('success', 'Word deleted!');
-    }
-
-
-    private function isValid(string $word): bool
+    public function run(): void
     {
         $valids = [
             "aback",
@@ -1967,6 +1875,8 @@ class WordController extends Controller
             "zooms"
         ];
 
-        return in_array($word, $valids);
+        foreach ($valids as $word) {
+            DB::table('validwords')->insert(['word' => $word]);
+        }
     }
 }
