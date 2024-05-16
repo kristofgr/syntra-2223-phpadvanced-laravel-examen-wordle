@@ -42,7 +42,7 @@ class WordController extends Controller
         }
 
         $word = new Word([
-            'word' => $request->get('word'),
+            'word' => strtolower($request->get('word')),
             'scheduled_at' => $request->get('scheduled_at'),
         ]);
 
@@ -77,7 +77,7 @@ class WordController extends Controller
             'scheduled_at' => 'required|date|after_or_equal:today',
         ]);
 
-        $new_word = $request->get('word');
+        $new_word = strtolower($request->get('word'));
 
         // Easy solution: search for valid words in array in method underneath
         // if (!$this->isValid($new_word)) {

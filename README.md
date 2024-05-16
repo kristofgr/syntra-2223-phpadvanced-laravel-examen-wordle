@@ -21,6 +21,7 @@ your application is now running on http://localhost, you should be able to regis
   - ddev composer update
   - ddev php artisan migrate
   - ddev php artisan db:seed --class=DummySeeder
+  - ddev php artisan db:seed --class=ValidwordSeeder
   - ddev npm install
   - ddev npm run build
 
