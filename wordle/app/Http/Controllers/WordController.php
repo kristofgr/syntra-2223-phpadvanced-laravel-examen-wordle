@@ -35,6 +35,12 @@ class WordController extends Controller
             'scheduled_at' => 'required|date|after_or_equal:today|unique:words',
         ]);
 
+        // Solution with MVC: we created a modal, migration and seeder for valid words
+        $valid = Validword::where('word', $request->get('word'))->first();
+        if (!$valid) {
+            return redirect()->back()->withErrors(['word' => 'The word ' . $request->get('word') . ' is not valid.']);
+        }
+
         $word = new Word([
             'word' => $request->get('word'),
             'scheduled_at' => $request->get('scheduled_at'),
