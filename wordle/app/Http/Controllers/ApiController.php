@@ -70,7 +70,6 @@ class ApiController extends Controller
 
         $data = [];
 
-
         foreach ($word_chars as $key => $guesschar) {
 
             if ($guesschar == $wordoftheday_chars[$key]) {
@@ -117,8 +116,6 @@ class ApiController extends Controller
             'status' => 'almostthere',
             'code' => 3,
             'message' => 'Guess again...',
-            'wordoftheday' => $wordoftheday_chars,
-            'guess' => $word_chars,
             'data' => $data
         ], 200);
     }
