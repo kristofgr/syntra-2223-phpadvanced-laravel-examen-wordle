@@ -64,8 +64,62 @@ class ApiController extends Controller
 
 
 
+        $wordoftheday_chars = str_split($wordoftoday);
+
+        $word_chars = str_split($word);
+
+        $data = [];
 
 
-        return 'check test';
+        foreach ($word_chars as $key => $guesschar) {
+
+            if ($guesschar == $wordoftheday_chars[$key]) {
+                $data[$key] = [
+                    'letter' => $guesschar,
+                    'code' => 2, // 0: is not present in word of the day, 1: is present in word of the day but in the wrong spot, 2: is present in word of the day and in the right spot    
+                ];
+                $wordoftheday_chars[$key] = null;
+                $word_chars[$key] = null;
+            }
+        }
+
+        foreach ($word_chars as $key => $guesschar) {
+
+            if ($guesschar != null) {
+                if (in_array($guesschar, $wordoftheday_chars)) {
+                    $data[$key] = [
+                        'letter' => $guesschar,
+                        'code' => 1, // 0: is not present in word of the day, 1: is present in word of the day but in the wrong spot, 2: is present in word of the day and in the right spot    
+                    ];
+                    $wordoftheday_chars[$key] = null;
+                    $word_chars[$key] = null;
+                }
+            }
+        }
+
+        foreach ($word_chars as $key => $guesschar) {
+
+            if ($guesschar != null) {
+                if (!in_array($guesschar, $wordoftheday_chars)) {
+                    $data[$key] = [
+                        'letter' => $guesschar,
+                        'code' => 0, // 0: is not present in word of the day, 1: is present in word of the day but in the wrong spot, 2: is present in word of the day and in the right spot    
+                    ];
+                    $wordoftheday_chars[$key] = null;
+                    $word_chars[$key] = null;
+                }
+            }
+        }
+
+        ksort($data);
+
+        return response()->json([
+            'status' => 'almostthere',
+            'code' => 3,
+            'message' => 'Guess again...',
+            'wordoftheday' => $wordoftheday_chars,
+            'guess' => $word_chars,
+            'data' => $data
+        ], 200);
     }
 }
