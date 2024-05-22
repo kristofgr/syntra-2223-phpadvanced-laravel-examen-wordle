@@ -1,0 +1,84 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "https:\/\/wordle.ddev.site"
+        }
+    ],
+    "info": {
+        "name": "Laravel",
+        "_postman_id": "d51ff417-e89d-4618-af3f-484a9d0cead7",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "Check Word",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/check",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/check"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"word\":\"est\"}"
+                        },
+                        "description": "Check that the guess matches the word of the day. If everything is okay, you'll get a 200 OK response.\n\nIf you make a mistake, you'll get a 422 status code.\n\nIf your guess doesn't match the word of the day, you'll get a 200 status code wih a summary of all supplied letters. For each letter you will receive a code 0, 1 of 2 where 0 means that the letter is not in the word of the day and 1 means that the letter is in the word of the day but in the wrong spot and 2 means that the letter is in the word of the day and in the right spot.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"status\": \"almostthere\",\n\"code\": 3,\n\"message\": \"Guess again...\",\n\"data\": [\n    {\n        \"letter\": \"s\",\n        \"code\": 2\n    },\n    {\n        \"letter\": \"p\",\n        \"code\": 2\n    },\n    {\n        \"letter\": \"o\",\n        \"code\": 2\n    },\n    {\n        \"letter\": \"o\",\n        \"code\": 0\n    },\n    {\n        \"letter\": \"n\",\n        \"code\": 0\n    }\n]\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n\"status\": \"success\",\n\"code\": 4,\n\"message\":  \"Guess is succesful.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 412,
+                            "body": "{\n \"status\": \"error\",\n \"code\": 1,\n \"message\": 'Word is required'\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 412,
+                            "body": "{\n \"status\": \"error\",\n \"code\": 2,\n \"message\": Supplied word is not valid'\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

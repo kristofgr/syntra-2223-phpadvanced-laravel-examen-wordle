@@ -1,0 +1,63 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'https://wordle.ddev.site'
+paths:
+  /api/check:
+    post:
+      summary: 'Check Word'
+      operationId: checkWord
+      description: "Check that the guess matches the word of the day. If everything is okay, you'll get a 200 OK response.\n\nIf you make a mistake, you'll get a 422 status code.\n\nIf your guess doesn't match the word of the day, you'll get a 200 status code wih a summary of all supplied letters. For each letter you will receive a code 0, 1 of 2 where 0 means that the letter is not in the word of the day and 1 means that the letter is in the word of the day but in the wrong spot and 2 means that the letter is in the word of the day and in the right spot."
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: success
+                  code: 4
+                  message: 'Guess is succesful.'
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  code:
+                    type: integer
+                    example: 4
+                  message:
+                    type: string
+                    example: 'Guess is succesful.'
+        412:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n \"status\": \"error\",\n \"code\": 2,\n \"message\": Supplied word is not valid'\n}"
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                word:
+                  type: string
+                  description: 'The guess you want to be validated to the word of the day.'
+                  example: est
+              required:
+                - word
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''

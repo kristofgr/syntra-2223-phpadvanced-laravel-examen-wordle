@@ -8,8 +8,59 @@ use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
+
     /**
-     * Store a newly created resource in storage.
+     * Check Word
+     *
+     * Check that the guess matches the word of the day. If everything is okay, you'll get a 200 OK response.
+     *
+     * If you make a mistake, you'll get a 422 status code.
+     *
+     * If your guess doesn't match the word of the day, you'll get a 200 status code wih a summary of all supplied letters. For each letter you will receive a code 0, 1 of 2 where 0 means that the letter is not in the word of the day and 1 means that the letter is in the word of the day but in the wrong spot and 2 means that the letter is in the word of the day and in the right spot.
+     *
+     * @bodyParam word string required The guess you want to be validated to the word of the day.
+     * @response 412 {
+     *  "status": "error",
+     *  "code": 1,
+     *  "message": 'Word is required'
+     * }
+     * @response 412 {
+     *  "status": "error",
+     *  "code": 2,
+     *  "message": Supplied word is not valid'
+     * }
+     * @response 200 {
+     * "status": "almostthere",
+     * "code": 3,
+     * "message": "Guess again...",
+     * "data": [
+     *     {
+     *         "letter": "s",
+     *         "code": 2
+     *     },
+     *     {
+     *         "letter": "p",
+     *         "code": 2
+     *     },
+     *     {
+     *         "letter": "o",
+     *         "code": 2
+     *     },
+     *     {
+     *         "letter": "o",
+     *         "code": 0
+     *     },
+     *     {
+     *         "letter": "n",
+     *         "code": 0
+     *     }
+     * ]
+     * }
+     * @response 200 {
+     * "status": "success",
+     * "code": 4,
+     * "message":  "Guess is succesful."
+     * }
      */
     public function check(Request $request)
     {
