@@ -34,6 +34,9 @@
                                 Word
                             </th>
                             <th scope="col" class="px-6 py-3">
+                                Image
+                            </th>
+                            <th scope="col" class="px-6 py-3">
                                 scheduled
                             </th>
                             <th scope="col" class="px-6 py-3">
@@ -47,7 +50,10 @@
                         @foreach ($words as $word)
                         <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $word->word }}
+                                {{$word->word}}
+                            </th>
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <img src="{{ asset( $word->img) }}" alt="{{$word->img}}" title="{{$word->img}}" width="50" />
                             </th>
                             <td class="px-6 py-4">
                                 {{ $word->scheduled_at }}

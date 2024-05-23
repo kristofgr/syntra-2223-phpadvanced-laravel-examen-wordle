@@ -33,6 +33,7 @@ class WordController extends Controller
         $request->validate([
             'word' => 'required|size:5',
             'scheduled_at' => 'required|date|after_or_equal:today|unique:words',
+            'img' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         // Solution with MVC: we created a modal, migration and seeder for valid words
@@ -41,8 +42,12 @@ class WordController extends Controller
             return redirect()->back()->withErrors(['word' => 'The word ' . $request->get('word') . ' is not valid.']);
         }
 
+        $path = $request->file('img')->storePublicly('public/words');
+        $path = str_replace('public/', 'storage/', $path);
+
         $word = new Word([
             'word' => strtolower($request->get('word')),
+            'img' => $path,
             'scheduled_at' => $request->get('scheduled_at'),
         ]);
 

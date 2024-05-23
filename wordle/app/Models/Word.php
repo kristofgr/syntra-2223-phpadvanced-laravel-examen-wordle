@@ -11,6 +11,7 @@ class Word extends Model
 
     protected $fillable = [
         'word',
+        'img',
         'scheduled_at'
     ];
 }
