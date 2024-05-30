@@ -63,6 +63,11 @@ class WordController extends Controller
         //
     }
 
+    public function sum($a, $b)
+    {
+        return $a + $b;
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
